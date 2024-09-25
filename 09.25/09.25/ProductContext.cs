@@ -14,7 +14,10 @@ namespace _09._25
         public DbSet<Category> Categories { get; set; }
 
         public DbSet<Sale> Sales { get; set; }
-
+        protected override void OnConfiguring(DbContextOptionsBuilder options)
+            => options.UseSqlServer($"Data Source=(LocalDb)\\MSSQLLocalDB;Initial Catalog=Blog;Integrated Security=true");
+    }
+}
 
 
 

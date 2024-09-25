@@ -8,7 +8,11 @@ namespace _09._25
 {
     public class Sale
     {
-        public int SalesDate { get; set; }
+        public int Id { get; set; }
+        public int Time { get; set; }
+
         public List<Product> Products { get; set; } = [];
+
+        public List<Category> Categories { get; set; } = [];
     }
 }

@@ -15,5 +15,6 @@ namespace _09._25
         public int Price { get; set; }
 
         public List<Category> Categories { get; set; } = [];
+        
     }
 }
