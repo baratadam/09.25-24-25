@@ -8,30 +8,34 @@ namespace _09._25
 {
     public class ProductService
     {
-      ProductContext db = new ProductContext();
+        ProductContext db = new ProductContext();
 
-        public void Create() {
-            Console.WriteLine("Adjon egy új terméket");
-            db.Add(new Product { Name = "Focilabda" });
+        public void AddProduct(string name)
+        {
+            var product = new Product { Name = name, Price = getprice() };
+            db.Products.Add(product);
             db.SaveChanges();
         }
-
-// Read
-Console.WriteLine("Querying for a blog");
-var blog = db.Blogs
-    .OrderBy(b => b.BlogId)
-    .First();
-
-// Update
-Console.WriteLine("Updating the blog and adding a post");
-blog.Url = "https://devblogs.microsoft.com/dotnet";
-blog.Posts.Add(
-    new Post { Title = "Hello World", Content = "I wrote an app using EF Core!" });
-db.SaveChanges();
-
-// Delete
-Console.WriteLine("Delete the blog");
-db.Remove(blog);
-db.SaveChanges();
+        public void AddCategory(string name)
+        {
+            var category = new Category { Name = name };
+            db.Categories.Add(category);
+            db.SaveChanges();
+        }
+        public int getprice()
+        {
+            int i = 0;
+            while(true){ 
+                Console.WriteLine("Please add a price to the product");
+                if (int.TryParse(Console.ReadLine(), out i))
+                {
+                    return i;
+                }
+                else
+                {
+                    Console.WriteLine("Try again");
+                }
+            }
+        }
     }
 }
